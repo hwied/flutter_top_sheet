@@ -1,11 +1,11 @@
 name: top_sheet
 description: Top sheet
-version: 0.0.4
+version: 0.0.5-nullsafety.0
 author: Narek Hakobyan
 homepage: https://github.com/NarHakobyan/flutter_top_sheet
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
