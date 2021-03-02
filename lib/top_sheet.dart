@@ -26,11 +26,8 @@ class TopSheet extends StatefulWidget {
             pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secondaryAnimation) {
               return TopSheet(
-                child: Container(
-                  color: Colors.white,
-                  child: SafeArea(
-                    child: child,
-                  ),
+                child: SafeArea(
+                  child: child,
                 ),
                 direction: direction,
                 backgroundColor: backgroundColor,
