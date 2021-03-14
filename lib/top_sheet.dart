@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 
 @immutable
 class TopSheet extends StatefulWidget {
-  final TopSheetDirection direction;
-  final Color backgroundColor;
-  final Widget child;
+  final TopSheetDirection? direction;
+  final Color? backgroundColor;
+  final Widget? child;
 
   TopSheet({this.child, this.direction, this.backgroundColor});
 
   @override
   _TopSheetState createState() => _TopSheetState();
 
-  static Future<T> show<T extends Object>(
-      {@required BuildContext context,
-      @required Widget child,
+  static Future<T?> show<T extends Object>(
+      {required BuildContext context,
+      required Widget child,
       direction = TopSheetDirection.BOTTOM,
       backgroundColor = const Color(0xb3212121)}) {
     return Navigator.push<T>(
@@ -38,14 +38,14 @@ class TopSheet extends StatefulWidget {
 }
 
 class _TopSheetState extends State<TopSheet> with TickerProviderStateMixin {
-  Animation<double> _animation;
-  Animation<double> _opacityAnimation;
-  AnimationController _animationController;
+  late Animation<double> _animation;
+  late Animation<double> _opacityAnimation;
+  late AnimationController _animationController;
 
   final _childKey = GlobalKey();
 
   double get _childHeight {
-    final RenderBox renderBox = _childKey.currentContext.findRenderObject();
+    final RenderBox renderBox = _childKey.currentContext!.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
@@ -81,7 +81,7 @@ class _TopSheetState extends State<TopSheet> with TickerProviderStateMixin {
   void _handleDragUpdate(DragUpdateDetails details) {
     if (_dismissUnderway) return;
 
-    var change = details.primaryDelta / (_childHeight ?? details.primaryDelta);
+    var change = details.primaryDelta! / (_childHeight ?? details.primaryDelta!);
     if (_isDirectionTop)
       _animationController.value += change;
     else
@@ -120,7 +120,7 @@ class _TopSheetState extends State<TopSheet> with TickerProviderStateMixin {
           builder: (context, child) {
             return Scaffold(
               backgroundColor:
-                  widget.backgroundColor.withOpacity(_opacityAnimation.value),
+                  widget.backgroundColor!.withOpacity(_opacityAnimation.value),
               body: Column(
                 key: _childKey,
                 children: <Widget>[
