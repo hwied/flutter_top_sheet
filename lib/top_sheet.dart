@@ -81,7 +81,7 @@ class _TopSheetState extends State<TopSheet> with TickerProviderStateMixin {
   void _handleDragUpdate(DragUpdateDetails details) {
     if (_dismissUnderway) return;
 
-    var change = details.primaryDelta! / (_childHeight ?? details.primaryDelta!);
+    var change = details.primaryDelta! / (_childHeight/* ?? details.primaryDelta!*/);
     if (_isDirectionTop)
       _animationController.value += change;
     else
